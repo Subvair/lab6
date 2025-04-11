@@ -1,21 +1,24 @@
 public abstract class MatrixHandler {
-  protected MatrixHandler next;
-  public void SetNext(MatrixHandler nextHandler) => next = nextHandler;
-  public abstract void Handle(SquareMatrix matrix);
-}
+    protected MatrixHandler _next;
+    
+    public void SetNext(MatrixHandler nextHandler) {
+        _next = nextHandler;
+    }
 
+    public abstract void Handle(SquareMatrix matrix);
+}
 public class TransposeHandler : MatrixHandler {
   public override void Handle(SquareMatrix matrix) {
     Console.WriteLine("\nТранспонированная матрица:");
     Console.WriteLine(matrix.Transpose());
-    next?.Handle(matrix);
+    _next?.Handle(matrix);
   }
 }
 
 public class TraceHandler : MatrixHandler {
   public override void Handle(SquareMatrix matrix) {
     Console.WriteLine($"След матрицы: {matrix.Trace():F2}");
-    next?.Handle(matrix);
+    _next?.Handle(matrix);
   }
 }
 
@@ -31,7 +34,7 @@ public class DiagonalHandler : MatrixHandler {
     Console.WriteLine("Матрица после приведения к диагональному виду:");
     Console.WriteLine(matrix);
 
-    next?.Handle(matrix);
+    _next?.Handle(matrix);
   }
 }
 

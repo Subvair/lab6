@@ -70,7 +70,6 @@ public class SquareMatrix : ICloneable, IComparable<SquareMatrix> {
   public static bool operator !=(SquareMatrix a, SquareMatrix b) => !a.Equals(b);
 
   public static explicit operator double(SquareMatrix m) => m.Determinant();
-  public static implicit operator bool(SquareMatrix m) => m.Determinant() != 0;
 
   public override bool Equals(object obj) {
     if (obj is not SquareMatrix other || Size != other.Size) return false;
